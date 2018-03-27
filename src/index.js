@@ -3,4 +3,7 @@ import hasResolved from './hasResolved';
 
 hasResolved.hasRejected = hasRejected;
 
-export default hasResolved;
+export {
+  hasResolved as default,
+  hasRejected
+};

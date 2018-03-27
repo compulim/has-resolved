@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.1] - 2018-03-26
+### Fixed
+- Fix: named import on `hasRejected` should not be undefined
+
 ## [1.0.0] - 2018-03-26
 ### Added
 - First public release

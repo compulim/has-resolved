@@ -1,8 +1,9 @@
-import hasRejected from './hasRejected';
-import hasResolved from '.';
+import hasRejectedImpl from './hasRejected';
+import hasResolved, { hasRejected } from '.';
 
 test('sanity check', async () => {
-  expect(hasResolved.hasRejected).toBe(hasRejected);
+  expect(hasRejected).toBe(hasRejectedImpl);
+  expect(hasResolved.hasRejected).toBe(hasRejectedImpl);
 
   await expect(hasResolved(Promise.resolve())).resolves.toBe(true);
   await expect(hasRejected(Promise.reject())).resolves.toBe(true);
