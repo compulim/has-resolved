@@ -1,0 +1,41 @@
+{
+  "name": "has-resolved",
+  "version": "1.0.0-0",
+  "description": "Checks if a Promise is resolved or rejected asynchronously",
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel --out-dir lib --ignore **/*.spec.js,**/*.test.js --source-maps inline src/",
+    "clean": "rimraf lib",
+    "test": "jest",
+    "versionCommit": "npx gulp-cli version-commit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compulim/has-resolved.git"
+  },
+  "keywords": [
+    "promise",
+    "resolve",
+    "resolved"
+  ],
+  "author": "William Wong <compulim@hotmail.com> (http://compulim.info/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/compulim/has-resolved/issues"
+  },
+  "homepage": "https://github.com/compulim/has-resolved#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-exec": "^3.0.1",
+    "jest": "^22.4.3",
+    "last-commit-log": "^1.0.3",
+    "rimraf": "^2.6.2"
+  }
+}
