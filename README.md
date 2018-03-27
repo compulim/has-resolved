@@ -1,8 +1,8 @@
 # has-resolved
 
-[![Build Status](https://travis-ci.org/compulim/has-resolved.svg?branch=master)](https://travis-ci.org/compulim/has-resolved)
-
 Checks if a Promise is resolved or rejected asynchronously
+
+[![Build Status](https://travis-ci.org/compulim/has-resolved.svg?branch=master)](https://travis-ci.org/compulim/has-resolved)
 
 # How to use
 
