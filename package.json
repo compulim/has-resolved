@@ -1,6 +1,6 @@
 {
   "name": "has-resolved",
-  "version": "1.0.1-0",
+  "version": "1.0.1",
   "description": "Checks if a Promise is resolved or rejected asynchronously",
   "files": [
     "lib/**/*"
