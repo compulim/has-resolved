@@ -2,7 +2,7 @@
 
 Checks if a Promise is resolved or rejected asynchronously
 
-[![Build Status](https://travis-ci.org/compulim/has-resolved.svg?branch=master)](https://travis-ci.org/compulim/has-resolved)
+[![npm version](https://badge.fury.io/js/has-resolved.svg)](https://badge.fury.io/js/has-resolved) [![Build Status](https://travis-ci.org/compulim/has-resolved.svg?branch=master)](https://travis-ci.org/compulim/has-resolved)
 
 # How to use
 
