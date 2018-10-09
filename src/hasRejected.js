@@ -3,6 +3,6 @@ export default function hasRejected(promise) {
 
   return Promise.race([
     promise,
-    new Promise((resolve, reject) => setImmediate(() => reject(symbol)))
+    new Promise((_, reject) => setImmediate(() => reject(symbol)))
   ]).then(() => false, result => result !== symbol);
 }
