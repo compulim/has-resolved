@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import hasRejectedImpl from './hasRejected';
 import hasResolved, { hasRejected } from '.';
 
