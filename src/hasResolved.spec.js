@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import hasResolved from './hasResolved';
 
 test('async resolve', async () => {

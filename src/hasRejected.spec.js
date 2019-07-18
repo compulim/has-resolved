@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import hasRejected from './hasRejected';
 
 test('async resolve', async () => {
