@@ -7,10 +7,10 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel --out-dir lib --ignore **/*.spec.js,**/*.test.js --source-maps inline src/",
-    "clean": "rimraf lib",
-    "test": "jest",
-    "versionCommit": "npx gulp-cli version-commit"
+    "build": "babel --out-dir lib src --ignore **/*.spec.js,**/*.test.js",
+    "prestart": "npm run build:babel",
+    "start": "npm run build:babel -- --skip-initial-build --watch",
+    "test": "jest --collectCoverage true"
   },
   "repository": {
     "type": "git",
@@ -27,19 +27,15 @@
     "url": "https://github.com/compulim/has-resolved/issues"
   },
   "homepage": "https://github.com/compulim/has-resolved#readme",
-  "jest": {
-    "collectCoverage": true
-  },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^26.0.1",
     "babel-plugin-add-module-exports": "^1.0.2",
-    "jest": "^24.8.0",
-    "regenerator-runtime": "^0.13.2",
-    "rimraf": "^2.6.3"
+    "jest": "^26.0.1",
+    "regenerator-runtime": "^0.13.5"
   }
 }
