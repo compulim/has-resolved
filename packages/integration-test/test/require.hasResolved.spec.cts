@@ -1,4 +1,4 @@
-const expect = require('expect');
+const { expect } = require('expect');
 const { hasResolved } = require('has-resolved');
 const { test } = require('node:test');
 
