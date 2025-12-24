@@ -19,7 +19,8 @@
   },
   "devDependencies": {
     "expect": "^26.0.1",
-    "has-resolved": "0.0.0-0"
+    "has-resolved": "0.0.0-0",
+    "resolve-cwd": "^3.0.0"
   },
   "localPeerDependencies": {
     "has-resolved": "0.0.0-0"
