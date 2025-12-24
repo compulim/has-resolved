@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Exports changed: `hasResolved` and `hasRejected` is now named exports
 - Bumped dependencies, in PR [#25](https://github.com/compulim/has-resolved/pull/25)
   - Development dependencies
     - [`escape-string-regexp@5.0.0`](https://npmjs.com/package/escape-string-regexp/v/5.0.0)
