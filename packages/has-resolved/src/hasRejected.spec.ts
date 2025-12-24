@@ -1,12 +1,13 @@
-import 'regenerator-runtime/runtime';
-import hasRejected from './hasRejected';
+import expect from 'expect';
+import { test } from 'node:test';
+import hasRejected from './hasRejected.ts';
 
 test('async resolve', async () => {
-  let resolve;
-  const promise = new Promise(r => resolve = r);
+  let resolve: (() => void) | undefined;
+  const promise = new Promise<void>(r => (resolve = r));
 
   await expect(hasRejected(promise)).resolves.toBeFalsy();
-  resolve();
+  resolve?.();
   await expect(hasRejected(promise)).resolves.toBeFalsy();
 });
 
@@ -15,11 +16,11 @@ test('sync resolve', () => {
 });
 
 test('async reject', async () => {
-  let reject;
-  const promise = new Promise((_, r) => reject = r);
+  let reject: (() => void) | undefined;
+  const promise = new Promise<void>((_, r) => (reject = r));
 
   await expect(hasRejected(promise)).resolves.toBeFalsy();
-  reject();
+  reject?.();
   await expect(hasRejected(promise)).resolves.toBeTruthy();
 });
 
