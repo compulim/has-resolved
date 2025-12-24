@@ -1,0 +1,42 @@
+{
+  "name": "has-resolved",
+  "version": "0.0.0-0",
+  "description": "Checks if a Promise is resolved or rejected asynchronously",
+  "keywords": [
+    "promise",
+    "resolve",
+    "resolved"
+  ],
+  "homepage": "https://github.com/compulim/has-resolved#readme",
+  "bugs": {
+    "url": "https://github.com/compulim/has-resolved/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compulim/has-resolved.git"
+  },
+  "license": "MIT",
+  "author": "William Wong <compulim@hotmail.com> (http://compulim.info/)",
+  "type": "commonjs",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "build": "babel --out-dir lib src --ignore **/*.spec.js,**/*.test.js",
+    "prestart": "npm run build:babel",
+    "start": "npm run build:babel -- --skip-initial-build --watch",
+    "test": "jest --collectCoverage true"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^26.0.1",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "jest": "^26.0.1",
+    "regenerator-runtime": "^0.13.5"
+  }
+}
