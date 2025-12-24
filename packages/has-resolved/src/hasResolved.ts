@@ -1,4 +1,4 @@
-export default function hasResolved(promise) {
+export default function hasResolved(promise: Promise<unknown>): Promise<boolean> {
   const symbol = Symbol();
 
   return Promise.race([

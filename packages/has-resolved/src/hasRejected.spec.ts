@@ -1,4 +1,5 @@
-import 'regenerator-runtime/runtime';
+/// <reference types="jest" />
+
 import hasRejected from './hasRejected';
 
 test('async resolve', async () => {

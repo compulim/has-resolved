@@ -1,4 +1,4 @@
-export default function hasRejected(promise) {
+export default function hasRejected(promise: Promise<unknown>): Promise<boolean> {
   const symbol = Symbol();
 
   return Promise.race([

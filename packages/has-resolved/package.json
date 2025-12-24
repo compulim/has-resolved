@@ -43,11 +43,16 @@
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "@tsconfig/strictest": "^2.0.8",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.0.1",
     "babel-plugin-add-module-exports": "^1.0.2",
+    "escape-string-regexp": "^1.0.5",
     "jest": "^26.0.1",
-    "regenerator-runtime": "^0.13.5"
+    "publint": "^0.3.16",
+    "regenerator-runtime": "^0.13.5",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   },
   "typings": "./dist/has-resolved.d.ts"
 }

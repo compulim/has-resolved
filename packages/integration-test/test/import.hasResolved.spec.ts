@@ -1,5 +1,6 @@
-import 'regenerator-runtime/runtime';
-import hasResolved from './hasResolved';
+import expect from 'expect';
+import { hasResolved } from 'has-resolved';
+import { test } from 'node:test';
 
 test('async resolve', async () => {
   let resolve;

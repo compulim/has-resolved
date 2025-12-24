@@ -2,9 +2,8 @@
   "name": "@compulim/has-resolved-integration-test",
   "version": "0.0.0-0",
   "private": true,
-  "description": "",
   "license": "MIT",
-  "author": "",
+  "author": "William Wong <https://github.com/compulim>",
   "scripts": {
     "build": "npm run build:copy && npm run build:custom --if-present",
     "build:copy": "mkdir -p ./test/webDriver/static/; SRC=$(node --eval=\"console.log(require('path').resolve(require('resolve-cwd')('has-resolved'), '../../dist'))\"); DEST=$(realpath ./test/webDriver/static); rm -rf $DEST; mkdir -p $DEST/js/; cp $SRC/** $DEST/js/",
@@ -16,12 +15,13 @@
     "precommit": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts ./",
     "pretest": "if test \"$CI\" = \"true\"; then npm run build; npm run docker -- --detach --wait; fi",
     "switch": "cat package.json | jq --arg SWITCH_NAME $SWITCH_NAME -r '(.[\"switch:\" + $SWITCH_NAME] // {}) as $TEMPLATE | .devDependencies += ($TEMPLATE.devDependencies // {}) | .dependencies += ($TEMPLATE.dependencies // {})' | tee ./package.json.tmp && mv ./package.json.tmp ./package.json",
-    "test": "node --import ./happy-dom-env.ts --test ${CI:---watch} **/*.{spec,test}.{[jt]s,[jt]sx,c[jt]s,m[jt]s}"
-  },
-  "localPeerDependencies": {
-    "has-resolved": "0.0.0-0"
+    "test": "node --test ${CI:---watch} **/*.{spec,test}.{[jt]s,[jt]sx,c[jt]s,m[jt]s}"
   },
   "devDependencies": {
+    "expect": "^26.0.1",
+    "has-resolved": "0.0.0-0"
+  },
+  "localPeerDependencies": {
     "has-resolved": "0.0.0-0"
   }
 }

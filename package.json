@@ -19,6 +19,8 @@
     "test": "npm run test --if-present --workspaces"
   },
   "workspaces": [
-    "packages/has-resolved"
+    "packages/has-resolved",
+    "packages/integration-test",
+    "packages/pages"
   ]
 }
