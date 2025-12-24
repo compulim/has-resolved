@@ -1,6 +1,6 @@
-/// <reference types="jest" />
-
-import hasRejected from './hasRejected';
+import expect from 'expect';
+import { test } from 'node:test';
+import hasRejected from './hasRejected.ts';
 
 test('async resolve', async () => {
   let resolve;

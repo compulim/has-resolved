@@ -2,27 +2,24 @@
   "name": "has-resolved",
   "version": "0.0.0-0",
   "description": "Checks if a Promise is resolved or rejected asynchronously",
-  "keywords": [
-    "promise",
-    "resolve",
-    "resolved"
-  ],
-  "homepage": "https://github.com/compulim/has-resolved#readme",
-  "bugs": {
-    "url": "https://github.com/compulim/has-resolved/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/compulim/has-resolved.git"
-  },
-  "license": "MIT",
-  "author": "William Wong <compulim@hotmail.com> (http://compulim.info/)",
-  "type": "commonjs",
-  "main": "./dist/has-resolved.js",
   "files": [
     "./*.js",
     "./dist/"
   ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/has-resolved.d.mts",
+        "default": "./dist/has-resolved.mjs"
+      },
+      "require": {
+        "types": "./dist/has-resolved.d.ts",
+        "default": "./dist/has-resolved.js"
+      }
+    }
+  },
+  "main": "./dist/has-resolved.js",
+  "typings": "./dist/has-resolved.d.ts",
   "scripts": {
     "build": "tsup",
     "bump": "npm run bump:prod && npm run bump:dev",
@@ -36,23 +33,32 @@
     "prepack": "cp ../../CHANGELOG.md . && cp ../../LICENSE . && cp ../../README.md .",
     "start": "npm run build -- --onSuccess \"touch ../pages/package.json\" --watch",
     "switch": "cat package.json | jq --arg SWITCH_NAME $SWITCH_NAME -r '(.[\"switch:\" + $SWITCH_NAME] // {}) as $TEMPLATE | .devDependencies += ($TEMPLATE.devDependencies // {}) | .dependencies += ($TEMPLATE.dependencies // {})' | tee ./package.json.tmp && mv ./package.json.tmp ./package.json",
-    "test": "node --import ./happy-dom-env.ts --test ${CI:---watch} **/*.{spec,test}.{[jt]s,[jt]sx,c[jt]s,m[jt]s}"
+    "test": "node --test ${CI:---watch} **/*.{spec,test}.{[jt]s,[jt]sx,c[jt]s,m[jt]s}"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/compulim/has-resolved.git"
+  },
+  "keywords": [
+    "promise",
+    "resolve",
+    "resolved"
+  ],
+  "author": "William Wong <compulim@hotmail.com> (http://compulim.info/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/compulim/has-resolved/issues"
+  },
+  "homepage": "https://github.com/compulim/has-resolved#readme",
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
     "@tsconfig/strictest": "^2.0.8",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.0.1",
-    "babel-plugin-add-module-exports": "^1.0.2",
     "escape-string-regexp": "^1.0.5",
-    "jest": "^26.0.1",
+    "expect": "^30.2.0",
     "publint": "^0.3.16",
-    "regenerator-runtime": "^0.13.5",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   },
-  "typings": "./dist/has-resolved.d.ts"
+  "dependencies": {
+    "@types/node": "^25.0.3"
+  }
 }
