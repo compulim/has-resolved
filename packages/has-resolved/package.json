@@ -13,20 +13,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/compulim/has-resolved.git"
+    "url": "https://github.com/compulim/has-resolved.git"
   },
   "license": "MIT",
   "author": "William Wong <compulim@hotmail.com> (http://compulim.info/)",
   "type": "commonjs",
-  "main": "lib/index.js",
+  "main": "./dist/has-resolved.js",
   "files": [
-    "lib/**/*"
+    "./*.js",
+    "./dist/"
   ],
   "scripts": {
-    "build": "babel --out-dir lib src --ignore **/*.spec.js,**/*.test.js",
-    "prestart": "npm run build:babel",
-    "start": "npm run build:babel -- --skip-initial-build --watch",
-    "test": "jest --collectCoverage true"
+    "build": "tsup",
+    "bump": "npm run bump:prod && npm run bump:dev",
+    "bump:dev": "PACKAGES_TO_BUMP=$(cat package.json | jq -r '(.pinDependencies // {}) as $P | (.localPeerDependencies // {}) as $L | (.devDependencies // {}) | to_entries | map(select(.key as $K | $L | has($K) | not)) | map(.key + \"@\" + ($P[.key] // [\"latest\"])[0]) | join(\" \")') && [ ! -z \"$PACKAGES_TO_BUMP\" ] && npm install $PACKAGES_TO_BUMP || true",
+    "bump:prod": "PACKAGES_TO_BUMP=$(cat package.json | jq -r '(.pinDependencies // {}) as $P | (.localPeerDependencies // {}) as $L | (.dependencies // {}) | to_entries | map(select(.key as $K | $L | has($K) | not)) | map(.key + \"@\" + ($P[.key] // [\"latest\"])[0]) | join(\" \")') && [ ! -z \"$PACKAGES_TO_BUMP\" ] && npm install $PACKAGES_TO_BUMP || true",
+    "precommit": "npm run precommit:eslint && npm run precommit:publint && npm run precommit:typescript:production && npm run precommit:typescript:test",
+    "precommit:eslint": "ESLINT_USE_FLAT_CONFIG=false eslint ./src/",
+    "precommit:publint": "publint",
+    "precommit:typescript:production": "tsc --noEmit --project ./src/tsconfig.precommit.production.json",
+    "precommit:typescript:test": "tsc --noEmit --project ./src/tsconfig.precommit.test.json",
+    "prepack": "cp ../../CHANGELOG.md . && cp ../../LICENSE . && cp ../../README.md .",
+    "start": "npm run build -- --onSuccess \"touch ../pages/package.json\" --watch",
+    "switch": "cat package.json | jq --arg SWITCH_NAME $SWITCH_NAME -r '(.[\"switch:\" + $SWITCH_NAME] // {}) as $TEMPLATE | .devDependencies += ($TEMPLATE.devDependencies // {}) | .dependencies += ($TEMPLATE.dependencies // {})' | tee ./package.json.tmp && mv ./package.json.tmp ./package.json",
+    "test": "node --import ./happy-dom-env.ts --test ${CI:---watch} **/*.{spec,test}.{[jt]s,[jt]sx,c[jt]s,m[jt]s}"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -38,5 +48,6 @@
     "babel-plugin-add-module-exports": "^1.0.2",
     "jest": "^26.0.1",
     "regenerator-runtime": "^0.13.5"
-  }
+  },
+  "typings": "./dist/has-resolved.d.ts"
 }
