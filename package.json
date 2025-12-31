@@ -13,9 +13,6 @@
     "postscaffold:eslint:react": "npm run bump:eslintrc",
     "precommit": "npm run precommit --if-present --workspaces",
     "switch:_": "npm run --if-present --workspaces switch && npm install --legacy-peer-deps --prefer-dedupe",
-    "switch:react-16": "SWITCH_NAME=react-16 npm run switch:_",
-    "switch:react-17": "SWITCH_NAME=react-17 npm run switch:_",
-    "switch:react-18": "SWITCH_NAME=react-18 npm run switch:_",
     "test": "npm run test --if-present --workspaces",
     "init": "npm run init:dev --if-present && npm run init:prod --if-present",
     "init:dev": "npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier"
